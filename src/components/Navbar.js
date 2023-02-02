@@ -6,7 +6,7 @@ import "../styles/navbar.scss";
 
 function Navbar() {
   const [isExpanded, setIsExpanded] = useState(false);
-  const [address, setAddress] = useState("");
+  // const [address, setAddress] = useState("");
 
   function handleClick() {
     setIsExpanded(!isExpanded);
@@ -18,10 +18,11 @@ function Navbar() {
           <span className="logo">
             <Link to="/">
               {/* <Image src={logo} alt="logo" /> */}
-              <h1 className="logo-h1">
-                <img src="/images/favicon.png" width="50px" height="50px" />
+              <div className="logo-sub">
+                <img className="logo-left" src="/images/favicon.png" />
+                <img className="logo-right" src="/images/paradigm.png" />
                 {/* UpToData */}
-              </h1>
+              </div>
             </Link>
           </span>
           <ul className={isExpanded === false ? "navmenu" : "navmenu active"}>
@@ -62,20 +63,20 @@ function Navbar() {
               </span>
             </li> */}
           </ul>
-          <ConnectButton
+          {/* <ConnectButton
             accountStatus={{
               smallScreen: "avatar",
               largeScreen: "full",
             }}
-          />
-          <button
+          /> */}
+          {/* <button
             onClick={handleClick}
             className={isExpanded === false ? "hamburger" : "hamburger active"}
           >
             <span className="bar"></span>
             <span className="bar"></span>
             <span className="bar"></span>
-          </button>
+          </button> */}
         </nav>
       </header>
 

@@ -16,6 +16,8 @@ function Stake() {
   };
   return (
     <div className="stake-main">
+      <div className="home-bg">
+      </div>
       <div className="form">
         <h2>Stake your FIL & earn intrest over it</h2>
         <div>
