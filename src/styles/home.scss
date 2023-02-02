@@ -1,0 +1,19 @@
+.home {
+
+  .home-bg {
+    top: 0;
+    position: fixed;
+    display: block;
+    background-image: url("../../public/images/1873.jpg");
+    width: 100%;
+    height: 100vh;
+    background-size: cover;
+    z-index: 200;
+  }
+
+  .home-main {
+    font-size: 30px;
+    z-index: 250;
+    position: relative;
+  }
+}

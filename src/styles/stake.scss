@@ -1,0 +1,42 @@
+.stake-main {
+    
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.container {
+    margin: 100px;
+    background-color: white;
+    padding: 40px;
+}
+
+.container h2 {
+    color: teal;
+}
+
+.input
+{
+
+    width: 100%;
+    box-sizing: border-box;
+    margin: 15px 0px;
+    padding: 12px 20px;
+
+}
+
+button {
+
+    margin: 15px 0px;
+    padding: 20px;
+    font-size: 18px;
+    width: 100%;
+    background-color: teal;
+    color: whitesmoke;
+    border: none;
+    cursor: pointer;
+
+}
