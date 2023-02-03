@@ -1,6 +1,10 @@
 import "@rainbow-me/rainbowkit/styles.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { getDefaultWallets, RainbowKitProvider, darkTheme } from "@rainbow-me/rainbowkit";
+import {
+  getDefaultWallets,
+  RainbowKitProvider,
+  darkTheme,
+} from "@rainbow-me/rainbowkit";
 import { chain, configureChains, createClient, WagmiConfig } from "wagmi";
 import { alchemyProvider } from "wagmi/providers/alchemy";
 import { publicProvider } from "wagmi/providers/public";
@@ -15,7 +19,14 @@ import Footer from "./pages/footer";
 
 function App() {
   const { chains, provider } = configureChains(
-    [chain.mainnet, chain.polygon, chain.optimism, chain.arbitrum],
+    [
+      chain.mainnet,
+      chain.polygon,
+      chain.optimism,
+      chain.arbitrum,
+      chain.goerli,
+      chain.polygonMumbai,
+    ],
     [
       alchemyProvider({ apiKey: process.env.REACT_APP_ALCHEMY_ID }),
       publicProvider(),
@@ -45,7 +56,7 @@ function App() {
               <Route path="/error-404" element={<Error404 />} />
             </Routes>
           </Router>
-          <Footer/>
+          <Footer />
         </div>
       </RainbowKitProvider>
     </WagmiConfig>
