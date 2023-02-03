@@ -18,20 +18,23 @@ function Stake() {
     <div className="stake-main">
       <div className="home-bg">
       </div>
-      <div className="form">
-        <h2>Stake your FIL & earn intrest over it</h2>
-        <div>
-          <input
-            className="input"
-            type="text"
-            value={number}
-            onChange={handleNumber}
-            onBlur={handleFloat}
-            name="value"
-            placeholder="value"
-          />
-
-          <button>Stake</button>
+      <div className="stake-form">
+        <div className="stake-main">
+          <h2 className="header">Stake your FIL & earn interest over it</h2>
+          <div>
+            <input
+              className="stake-entry"
+              type="text"
+              value={number}
+              onChange={handleNumber}
+              onBlur={handleFloat}
+              name="value"
+              placeholder="value"
+            />
+          </div>
+          <div>
+            <button className="stake-btn">Stake</button>
+          </div>
         </div>
       </div>
     </div>

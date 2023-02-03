@@ -1,9 +1,25 @@
 @font-face {
-    font-family: "sm-bold" ;
+    font-family: "sm-bold";
     src: url("../public/fonts/SpaceMono-Bold.ttf");
 }
 
 @font-face {
-    font-family: "sm-regular" ;
+    font-family: "sm-regular";
     src: url("../public/fonts/SpaceMono-Regular.ttf");
+}
+
+@font-face {
+    font-family: "pfo-regular";
+    src: url("../public/fonts/Pacifico-Regular.ttf");
+}
+
+.home-bg {
+    top: 0;
+    position: fixed;
+    display: block;
+    background-image: url("../public/images/1873.jpg");
+    width: 100%;
+    height: 100vh;
+    background-size: cover;
+    z-index: 200;
 }

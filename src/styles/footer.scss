@@ -1,0 +1,72 @@
+.footer {
+    height: 90vh;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 250;
+    position: relative;
+    margin: 0 auto;
+
+    .header {
+        font-family: "sm-regular";
+        font-weight: 1000;
+        font-size: 50px;
+        color: #ffffff;
+        padding-top: 30px;
+    }
+
+    .horizon {
+        border: 1px solid #09fdfe;
+    }
+
+    .page-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 150px;
+        justify-content: center;
+        margin-top: 40px;
+        padding: 30px;
+
+        .page {
+            font-size: 20px;
+
+            .info {
+                width: inherit;
+                cursor: pointer;
+                color: #ffffff;
+                font-weight: 600;
+                font-family: "sm-regular";
+            }
+        }
+    }
+
+    .handle-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 120px;
+        justify-content: center;
+        margin-top: 40px;
+        padding: 30px;
+
+        .handle {
+            font-size: 20px;
+
+            .icon {
+                height: 70px;
+                width: 70px;
+                cursor: pointer;
+            }
+        }
+    }
+
+    .base {
+        margin-top: 70px;
+        width: 100%;
+        font-size: 18px;
+        font-weight: 400;
+        font-family: "sm-regular";
+        color: #ffffff;
+        text-align: center;
+        position: absolute;
+
+    }
+}

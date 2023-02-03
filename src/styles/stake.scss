@@ -7,6 +7,48 @@
     z-index: 250;
 }
 
+.stake-form {
+    z-index: 250;
+    height: 100vh;
+
+    .stake-main {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        align-content: center;
+        gap: 20px;
+        backdrop-filter: blur(20px);
+        height: 300px;
+        border-radius: 20px;
+
+        .header {
+            font-family: "sm-regular";
+            color: #b477ff;
+            font-size: 30px;
+        }
+
+        .stake-entry {
+            width: 300px;
+            padding: 10px;
+            border: 0;
+            border-radius: 10px;
+        }
+
+        .stake-btn {
+            font-family: "sm-bold";
+            background-color: #0E76FD;
+            padding: 15px;
+            color: #ffffff;
+            font-weight: 600;
+            font-size: 20px;
+            border: 0;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+    }
+
+}
+
 .container {
     margin: 100px;
     background-color: white;
@@ -17,8 +59,7 @@
     color: teal;
 }
 
-.input
-{
+.input {
 
     width: 100%;
     box-sizing: border-box;
@@ -27,15 +68,15 @@
 
 }
 
-button {
+// button {
 
-    margin: 15px 0px;
-    padding: 20px;
-    font-size: 18px;
-    width: 100%;
-    background-color: teal;
-    color: whitesmoke;
-    border: none;
-    cursor: pointer;
+//     margin: 15px 0px;
+//     padding: 20px;
+//     font-size: 18px;
+//     width: 100%;
+//     background-color: teal;
+//     color: whitesmoke;
+//     border: none;
+//     cursor: pointer;
 
-}
+// }
