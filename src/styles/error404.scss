@@ -1,0 +1,21 @@
+.e404-main {
+    height: 100vh;
+    z-index: 250;
+    position: relative;
+    display: flex;
+    align-items: center;
+    align-content: center;
+
+    .error {
+        width: 330px;
+        margin: 0 auto;
+        font-size: 100px;
+        text-align: center;
+        padding: 30px;
+        font-family: "sm-regular";
+        color: #ffffff;
+        -webkit-backdrop-filter: blur(8px);
+        backdrop-filter: blur(8px);
+        border-radius: 20px;
+    }
+}

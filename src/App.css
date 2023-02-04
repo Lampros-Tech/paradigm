@@ -9,6 +9,11 @@
 }
 
 @font-face {
+  font-family: "sm-italic";
+  src: url("../public/fonts/SpaceMono-Italic.ttf");
+}
+
+@font-face {
   font-family: "pfo-regular";
   src: url("../public/fonts/Pacifico-Regular.ttf");
 }
