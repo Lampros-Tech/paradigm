@@ -1,10 +1,11 @@
-import React from "react";
 import "../styles/stake.scss";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useAccount, useProvider, useSigner, useContract } from "wagmi";
 import { CONTRACT_ADDRESS } from "../config";
 import stakeFIL_abi from "../contract/stakeFIL.json";
 import { ethers } from "ethers";
+import Staked from "./stake/staked.jsx";
+import Withdraw from "./stake/withdraw";
 
 function Stake() {
   //getting signer and provider
@@ -13,6 +14,9 @@ function Stake() {
   const { data: signer } = useSigner();
   const [duration, setDuration] = useState(30);
   const [stakeValue, setStakeValue] = useState("");
+  const [activeTab, setActiveTab] = useState(0);
+  const [balance, setBalance] = useState("");
+  const stakeRef = useRef();
 
   //instance of connected contract
   const connectedContract = useContract({
@@ -32,6 +36,7 @@ function Stake() {
     const receipt = await stakeTx.wait();
     if (receipt) {
       console.log("stake successful");
+      stakeRef.current = "";
     }
   };
 
@@ -41,9 +46,9 @@ function Stake() {
     //converting stakeValue from eth -> wei -> integer -> string
     console.log(
       "amount going to withdraw: " +
-        parseInt(
-          ethers.utils.parseUnits(stakeValue.toString(), "ether")
-        ).toString()
+      parseInt(
+        ethers.utils.parseUnits(stakeValue.toString(), "ether")
+      ).toString()
     );
     let withdrawTx = await connectedContract.withdraw(
       address,
@@ -57,6 +62,7 @@ function Stake() {
     const receipt = await withdrawTx.wait();
     if (receipt) {
       console.log("withdraw successful");
+      stakeRef.current = "";
     }
   };
 
@@ -94,35 +100,52 @@ function Stake() {
   const handleFloat = () => {
     setStakeValue(parseFloat(stakeValue) || "");
   };
+
+  const handleWNumber = (e) => {
+    let input = e.target.value;
+
+    if (input.match(/^([0-9]{1,})?(\.)?([0-9]{1,})?$/)) setStakeValue(input);
+  };
+
+  const handleWFloat = () => {
+    setStakeValue(parseFloat(stakeValue) || "");
+  };
+
+  const fetchBalance = async () => {
+    //returns stake amount of a user
+    let readUserStake = await connectedContract.readUserStake();
+    // console.log("stake " + parseInt(readUserStake));
+    setBalance(ethers.utils.formatEther(parseInt(readUserStake).toString()));
+    // console.log(balance);
+  }
+
+  useEffect(() => {
+    fetchBalance();
+  }, [])
+
   return (
     <div className="stake-main">
       <div className="home-bg"></div>
       <div className="stake-form">
-        <div className="stake-main">
-          <h2 className="header">Stake your FIL & earn interest over it</h2>
-          <div>
-            <input
-              className="stake-entry"
-              type="text"
-              value={stakeValue}
-              onChange={handleNumber}
-              onBlur={handleFloat}
-              name="value"
-              placeholder="value"
-            />
-          </div>
-          <div>
-            <button className="stake-btn" onClick={() => stakeFilCoin()}>
+        <div className="switch">
+          <div className="left" onClick={() => { setActiveTab(0) }}>
+            <span className={activeTab === 0 ? "active" : "inactive"}>
               Stake
-            </button>
-            <button className="stake-btn" onClick={() => withdrawFilCoin()}>
-              withdraw
-            </button>
-            <button className="stake-btn" onClick={() => viewFunctions()}>
-              viewEpoch
-            </button>
+            </span>
+          </div>
+          <div className="right" onClick={() => { setActiveTab(1) }}>
+            <span className={activeTab === 1 ? "active" : "inactive"}>
+              Withdraw
+            </span>
           </div>
         </div>
+        {
+          activeTab === 0
+            ?
+            <Staked stakeValue={stakeValue} handleNumber={handleNumber} stakeRef={stakeRef} handleFloat={handleFloat} stakeFilCoin={stakeFilCoin} />
+            :
+            <Withdraw stakeValue={stakeValue} balance={balance} connectedContract={connectedContract} handleNumber={handleWNumber} handleFloat={handleWFloat} withdrawFilCoin={withdrawFilCoin} />
+        }
       </div>
     </div>
   );

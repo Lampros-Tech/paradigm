@@ -38,12 +38,21 @@ function Navbar() {
               </li>
             </Link>
             <Link
+              to="/loan"
+              className="navlink"
+            >
+              <li className="navitem">
+                <span>
+                  Loan
+                </span>
+              </li>
+            </Link>
+            <Link
               to="/stake"
               className="navlink"
             >
               <li className="navitem">
                 <span>
-
                   Stake
                 </span>
               </li>

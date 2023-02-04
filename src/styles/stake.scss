@@ -3,13 +3,67 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  margin-top: 100px;
+  // margin-top: 10px;
   z-index: 250;
 }
 
 .stake-form {
   z-index: 250;
   height: 100vh;
+
+  .switch {
+    display: inline-flex;
+    align-items: center;
+    align-content: center;
+    font-size: 30px;
+    width: 900px;
+    margin-top: 160px;
+    // backdrop-filter: blur(20px);
+    filter: grayscale(15%);
+    padding: 20px;
+    color: #ffffff;
+    font-family: "sm-bold";
+    border: 1px solid #0e76fd;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+
+    .left {
+      width: 100%;
+      text-align: center;
+      border-right: 1px solid #0e76fd;
+      cursor: pointer;
+
+      .active {
+        color: #b477ff;
+        border: 1px solid #0e76fd;
+        padding: 10px;
+      }
+
+      :hover {
+        color: #b477ff;
+        border: 1px solid #0e76fd;
+        padding: 10px;
+      }
+    }
+
+    .right {
+      width: 100%;
+      text-align: center;
+      cursor: pointer;
+
+      .active {
+        color: #b477ff;
+        border: 1px solid #0e76fd;
+        padding: 10px;
+      }
+
+      :hover {
+        color: #b477ff;
+        border: 1px solid #0e76fd;
+        padding: 10px;
+      }
+    }
+  }
 
   .stake-main {
     display: flex;
@@ -22,13 +76,37 @@
     // background-color: black;
     filter: grayscale(15%);
     height: 300px;
-    border-radius: 20px;
+    width: 900px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
     padding: 20px;
 
     .header {
       font-family: "sm-regular";
       color: #ffffff;
       font-size: 30px;
+    }
+
+    .balance {
+      display: inline-flex;
+      font-size: 30px;
+      font-family: "sm-bold";
+      width: 300px;
+      align-items: center;
+      align-content: center;
+      margin-top: -15px;
+      background-color: #ffffff;
+      border-radius: 10px;
+
+      .left {
+        text-align: center;
+        width: 100%;
+      }
+
+      .right {
+        text-align: center;
+        width: 100%;
+      }
     }
 
     .stake-entry {
