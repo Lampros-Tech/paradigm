@@ -45,7 +45,7 @@ function Stake() {
           ethers.utils.parseUnits(stakeValue.toString(), "ether")
         ).toString()
     );
-    let stakeTx = await connectedContract.withdraw(
+    let withdrawTx = await connectedContract.withdraw(
       address,
       parseInt(
         ethers.utils.parseUnits(stakeValue.toString(), "ether")
@@ -54,7 +54,7 @@ function Stake() {
         gasLimit: 3000000,
       }
     );
-    const receipt = await stakeTx.wait();
+    const receipt = await withdrawTx.wait();
     if (receipt) {
       console.log("withdraw successful");
     }
@@ -68,16 +68,16 @@ function Stake() {
     console.log(Math.round(Date.now() / 1000));
 
     //returns current epoch time from smart contract
-    let stakeTx = await connectedContract.rightNow();
-    console.log("right now from sc " + parseInt(stakeTx));
+    let rightNow = await connectedContract.rightNow();
+    console.log("right now from sc " + parseInt(rightNow));
 
     //returns stake amount of a user
-    let readStake = await connectedContract.readStake();
-    console.log("stake " + parseInt(readStake));
+    let readUserStake = await connectedContract.readUserStake();
+    console.log("stake " + parseInt(readUserStake));
 
     //returns the epoch time when user stakes
-    let readEpoch = await connectedContract.readEpoch();
-    console.log("time of stake " + parseInt(readEpoch));
+    let readStakeTimeEpoch = await connectedContract.readStakeTimeEpoch();
+    console.log("time of stake " + parseInt(readStakeTimeEpoch));
 
     //returns the epoch time to withdraw
     let readWithdrawEligibility =
