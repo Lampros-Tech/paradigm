@@ -1,4 +1,6 @@
-function Staked(props) {
+import React from "react";
+
+const Staked = React.forwardRef((props, stakeRef) => {
     return (
         <>
             <div className="stake-main">
@@ -12,7 +14,7 @@ function Staked(props) {
                         onBlur={props.handleFloat}
                         name="value"
                         placeholder="value"
-                        ref={props.stakeRef}
+                        ref={stakeRef}
                     />
                 </div>
                 <div>
@@ -29,6 +31,6 @@ function Staked(props) {
             </div>
         </>
     )
-}
+})
 
 export default Staked;

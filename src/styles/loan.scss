@@ -1,0 +1,41 @@
+.loan-main {
+    .loan-form {
+        min-height: 100vh;
+        position: relative;
+        z-index: 250;
+        margin-top: 100px;
+
+        .search-bar {
+            width: 400px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            align-content: center;
+            flex-direction: column;
+            padding: 40px;
+            -webkit-backdrop-filter: blur(8px);
+            backdrop-filter: blur(8px);
+            border-radius: 20px;
+
+            .search-box {
+                font-family: "sm-regular";
+                width: 200px;
+                margin: 20px;
+                padding: 10px;
+                border: 1px solid transparent;
+                border-radius: 20px;
+            }
+
+            .search-btn {
+                padding: 10px 10px;
+                font-family: "sm-bold";
+                font-size: 17px;
+                border-radius: 5px;
+                background-color: #0e76fd;
+                border: 1px solid transparent;
+                cursor: pointer;
+            }
+        }
+    }
+
+}

@@ -1,7 +1,9 @@
-import { useEffect, useState } from 'react';
-import { ethers } from 'ethers';
+// import { useEffect, useState } from 'react';
+// import { ethers } from 'ethers';
 
-function Withdraw(props) {
+import React from "react";
+
+const Withdraw = React.forwardRef((props, withdrawRef) => {
 
     return (
         <>
@@ -12,7 +14,7 @@ function Withdraw(props) {
                         Balance
                     </div>
                     <div className='right'>
-                        { props.balance ? props.balance : "-" }
+                        {props.balance ? props.balance : "-"}
                     </div>
                 </div>
                 <div>
@@ -24,6 +26,7 @@ function Withdraw(props) {
                         onBlur={props.handleFloat}
                         name="value"
                         placeholder="value"
+                        ref={withdrawRef}
                     />
                 </div>
                 <div>
@@ -40,6 +43,6 @@ function Withdraw(props) {
             </div>
         </>
     )
-}
+})
 
 export default Withdraw;

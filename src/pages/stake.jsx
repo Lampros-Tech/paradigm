@@ -1,6 +1,6 @@
 import "../styles/stake.scss";
 import { useState, useRef, useEffect } from "react";
-import { useAccount, useProvider, useSigner, useContract } from "wagmi";
+import { useAccount, useSigner, useContract } from "wagmi";
 import { CONTRACT_ADDRESS } from "../config";
 import stakeFIL_abi from "../contract/stakeFIL.json";
 import { ethers } from "ethers";
@@ -10,13 +10,14 @@ import Withdraw from "./stake/withdraw";
 function Stake() {
   //getting signer and provider
   const { address } = useAccount();
-  const provider = useProvider();
+  // const provider = useProvider();
   const { data: signer } = useSigner();
   const [duration, setDuration] = useState(30);
   const [stakeValue, setStakeValue] = useState("");
   const [activeTab, setActiveTab] = useState(0);
   const [balance, setBalance] = useState("");
   const stakeRef = useRef();
+  const withdrawRef = useRef();
 
   //instance of connected contract
   const connectedContract = useContract({
@@ -36,6 +37,7 @@ function Stake() {
     const receipt = await stakeTx.wait();
     if (receipt) {
       console.log("stake successful");
+      fetchBalance();
       stakeRef.current = "";
     }
   };
@@ -62,7 +64,8 @@ function Stake() {
     const receipt = await withdrawTx.wait();
     if (receipt) {
       console.log("withdraw successful");
-      stakeRef.current = "";
+      withdrawRef.current = "";
+      fetchBalance();
     }
   };
 
@@ -113,15 +116,25 @@ function Stake() {
 
   const fetchBalance = async () => {
     //returns stake amount of a user
-    let readUserStake = await connectedContract.readUserStake();
-    // console.log("stake " + parseInt(readUserStake));
-    setBalance(ethers.utils.formatEther(parseInt(readUserStake).toString()));
-    // console.log(balance);
+    // console.log("In here");
+    try {
+      let readUserStake = await connectedContract.readUserStake();
+      // console.log("stake " + parseInt(readUserStake));
+      setBalance(ethers.utils.formatEther(parseInt(readUserStake).toString()));
+      // console.log(balance);
+    } catch (e) {
+      console.log(e);
+    }
+
   }
 
   useEffect(() => {
-    fetchBalance();
-  }, [])
+    if (activeTab === 1) fetchBalance();
+  }, [activeTab])
+
+  useEffect(() => {
+    console.log(balance)
+  }, [balance])
 
   return (
     <div className="stake-main">
@@ -144,7 +157,7 @@ function Stake() {
             ?
             <Staked stakeValue={stakeValue} handleNumber={handleNumber} stakeRef={stakeRef} handleFloat={handleFloat} stakeFilCoin={stakeFilCoin} />
             :
-            <Withdraw stakeValue={stakeValue} balance={balance} connectedContract={connectedContract} handleNumber={handleWNumber} handleFloat={handleWFloat} withdrawFilCoin={withdrawFilCoin} />
+            <Withdraw stakeValue={stakeValue} balance={balance} withdrawRef={withdrawRef} handleNumber={handleWNumber} handleFloat={handleWFloat} withdrawFilCoin={withdrawFilCoin} />
         }
       </div>
     </div>
