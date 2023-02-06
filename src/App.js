@@ -1,10 +1,9 @@
 import "@rainbow-me/rainbowkit/styles.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import {
-  getDefaultWallets,
-  RainbowKitProvider
-} from "@rainbow-me/rainbowkit";
-import { chain, configureChains, createClient, WagmiConfig } from "wagmi";
+import { getDefaultWallets, RainbowKitProvider } from "@rainbow-me/rainbowkit";
+import { configureChains, createClient, WagmiConfig } from "wagmi";
+import { filecoin, filecoinHyperspace } from "wagmi/chains";
+// import { chain, configureChains, createClient, WagmiConfig } from "wagmi";
 import { alchemyProvider } from "wagmi/providers/alchemy";
 import { publicProvider } from "wagmi/providers/public";
 
@@ -20,14 +19,7 @@ import Methodologies from "./pages/methodologies";
 
 function App() {
   const { chains, provider } = configureChains(
-    [
-      chain.mainnet,
-      chain.polygon,
-      chain.optimism,
-      chain.arbitrum,
-      chain.goerli,
-      chain.polygonMumbai,
-    ],
+    [filecoin, filecoinHyperspace],
     [
       alchemyProvider({ apiKey: process.env.REACT_APP_ALCHEMY_ID }),
       publicProvider(),
