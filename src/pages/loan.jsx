@@ -61,9 +61,14 @@ function Loan() {
         console.log(
           "Locked rewards: " + response.data.result.extra.locked_balance
         );
+        // const typeOfData = response.data.result.extra.locked_balance;
+        // console.log(typeof typeOfData);
+        // console.log(Number(typeOfData));
+        // const numberTypeOfData = Number(typeOfData);
+        // console.log(typeof numberTypeOfData);
         setFetchedData((dataFetched) => ({
           ...dataFetched,
-          lockedRewards: response.data.result.extra.locked_balance,
+          lockedRewards: Number(response.data.result.extra.locked_balance),
         }));
         //--------------------------------------------------------------------------Initial pledge
         console.log(
@@ -71,7 +76,7 @@ function Loan() {
         );
         setFetchedData((dataFetched) => ({
           ...dataFetched,
-          initialPledge: response.data.result.extra.init_pledge,
+          initialPledge: Number(response.data.result.extra.init_pledge),
         }));
         console.log("power:" + response.data.result.extra.power);
         //-----------------------------------------------------------------------pre commit rewards
@@ -80,7 +85,7 @@ function Loan() {
         );
         setFetchedData((dataFetched) => ({
           ...dataFetched,
-          preCommitDeposit: response.data.result.extra.pre_deposits,
+          preCommitDeposit: Number(response.data.result.extra.pre_deposits),
         }));
         console.log("Rewards:" + response.data.result.basic.rewards);
       })
@@ -113,7 +118,7 @@ function Loan() {
         );
         setFetchedData((dataFetched) => ({
           ...dataFetched,
-          oneYear: response.data.result.blocks_rewards,
+          oneYear: Number(response.data.result.blocks_rewards),
         }));
       })
       .catch(function (error) {
@@ -146,7 +151,7 @@ function Loan() {
         );
         setFetchedData((dataFetched) => ({
           ...dataFetched,
-          thirtyDays: response.data.result.blocks_rewards,
+          thirtyDays: Number(response.data.result.blocks_rewards),
         }));
       })
       .catch(function (error) {
@@ -178,7 +183,7 @@ function Loan() {
         );
         setFetchedData((dataFetched) => ({
           ...dataFetched,
-          sevenDays: response.data.result.blocks_rewards,
+          sevenDays: Number(response.data.result.blocks_rewards),
         }));
       })
       .catch(function (error) {
@@ -210,7 +215,7 @@ function Loan() {
         );
         setFetchedData((dataFetched) => ({
           ...dataFetched,
-          twentyFourHours: response.data.result.blocks_rewards,
+          twentyFourHours: Number(response.data.result.blocks_rewards),
         }));
       })
       .catch(function (error) {
@@ -231,7 +236,7 @@ function Loan() {
         console.log("Reputation score : " + response.data.miners[0].score);
         setFetchedData((dataFetched) => ({
           ...dataFetched,
-          filRepScore: response.data.miners[0].score,
+          filRepScore: Number(response.data.miners[0].score),
         }));
       })
       .catch(function (error) {
@@ -244,15 +249,20 @@ function Loan() {
     //--------------------------------- 1. staked amount + Initial pledge (stored in scoreCollateral) (out of 30)
     let spCollateral = dataFetched.initialPledge + dataFetched.lockedRewards;
     console.log(spCollateral);
-
-    const diffValueCollateral = (Math.abs(maxCap - spCollateral) / maxCap) * 2;
-    const answer = 2 - diffValueCollateral;
-    console.log(answer);
-    let scoreCollateral = (30 * answer) / 1.5;
-    if (scoreCollateral > 30) {
+    let scoreCollateral;
+    if (spCollateral > maxCap) {
       scoreCollateral = 30;
+    } else {
+      const diffValueCollateral =
+        (Math.abs(maxCap - spCollateral) / maxCap) * 2;
+      const answer = 2 - diffValueCollateral;
+      console.log(answer);
+      scoreCollateral = (30 * answer) / 1.5;
+      if (scoreCollateral > 30) {
+        scoreCollateral = 30;
+      }
+      console.log("score out of 30 is " + scoreCollateral);
     }
-    console.log("score out of 30 is " + scoreCollateral);
 
     //---------------------------------- 2. previous history / monthly average (stored in scoreHistory) (x/10) (out of 30)
     const avg =
@@ -324,7 +334,7 @@ function Loan() {
     ) {
       calculateData();
     }
-  }, [dataFetched]);
+  }, [dataFetched.filRepScore]);
 
   return (
     <div className="loan-main">
@@ -346,6 +356,14 @@ function Loan() {
             }}
           >
             Check Eligibility
+          </button>
+          <button
+            className="search-btn"
+            onClick={() => {
+              calculateData();
+            }}
+          >
+            Calculate score
           </button>
         </div>
         <div className="display"></div>
