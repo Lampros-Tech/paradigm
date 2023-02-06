@@ -38,4 +38,28 @@
         }
     }
 
+    .display {
+        // display: inline-flex;
+        // align-items: center;
+        // align-content: center;
+        width: 300px;
+        margin: 0 auto;
+        text-align: center;
+        flex-direction: row;
+        font-size: 30px;
+        font-family: "sm-bold";
+        color: #ffffff;
+
+        // .loading-screen {
+        //     display: flex;
+        //     align-items: center;
+        //     align-content: center;
+
+        //     .loading-text {
+        //         font-size: 30px;
+        //         font-family: "sm-bold";
+        //         color: #ffffff;
+        //     }
+        // }
+    }
 }

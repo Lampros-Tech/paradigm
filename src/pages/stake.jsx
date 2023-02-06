@@ -30,13 +30,13 @@ function Stake() {
   const stakeFilCoin = async () => {
     //1675492444
     //1675492603134
-    console.log("Inside stake function");
+    //console.log("Inside stake function");
     let stakeTx = await connectedContract.stake(duration, {
       value: ethers.utils.parseUnits(stakeValue.toString(), "ether"),
     });
     const receipt = await stakeTx.wait();
     if (receipt) {
-      console.log("stake successful");
+      //console.log("stake successful");
       fetchBalance();
       stakeRef.current = "";
     }
@@ -44,14 +44,14 @@ function Stake() {
 
   //function to withdraw
   const withdrawFilCoin = async () => {
-    console.log("Inside withdraw function");
+    //console.log("Inside withdraw function");
     //converting stakeValue from eth -> wei -> integer -> string
-    console.log(
-      "amount going to withdraw: " +
-        parseInt(
-          ethers.utils.parseUnits(stakeValue.toString(), "ether")
-        ).toString()
-    );
+    //console.log(
+    //   "amount going to withdraw: " +
+    //     parseInt(
+    //       ethers.utils.parseUnits(stakeValue.toString(), "ether")
+    //     ).toString()
+    // );
     let withdrawTx = await connectedContract.withdraw(
       address,
       parseInt(
@@ -63,7 +63,7 @@ function Stake() {
     );
     const receipt = await withdrawTx.wait();
     if (receipt) {
-      console.log("withdraw successful");
+      //console.log("withdraw successful");
       withdrawRef.current = "";
       fetchBalance();
     }
@@ -71,27 +71,27 @@ function Stake() {
 
   const viewFunctions = async () => {
     //duration of stake as we set from front end
-    console.log(Math.round(Date.now() / 1000) + duration);
+    //console.log(Math.round(Date.now() / 1000) + duration);
 
     //consoles current epoch from javascript
-    console.log(Math.round(Date.now() / 1000));
+    //console.log(Math.round(Date.now() / 1000));
 
     //returns current epoch time from smart contract
     let rightNow = await connectedContract.rightNow();
-    console.log("right now from sc " + parseInt(rightNow));
+    //console.log("right now from sc " + parseInt(rightNow));
 
     //returns stake amount of a user
     let readUserStake = await connectedContract.readUserStake();
-    console.log("stake " + parseInt(readUserStake));
+    //console.log("stake " + parseInt(readUserStake));
 
     //returns the epoch time when user stakes
     let readStakeTimeEpoch = await connectedContract.readStakeTimeEpoch();
-    console.log("time of stake " + parseInt(readStakeTimeEpoch));
+    //console.log("time of stake " + parseInt(readStakeTimeEpoch));
 
     //returns the epoch time to withdraw
     let readWithdrawEligibility =
       await connectedContract.readWithdrawEligibility();
-    console.log("eligible time " + parseInt(readWithdrawEligibility));
+    //console.log("eligible time " + parseInt(readWithdrawEligibility));
   };
 
   const handleNumber = (e) => {
@@ -116,14 +116,14 @@ function Stake() {
 
   const fetchBalance = async () => {
     //returns stake amount of a user
-    // console.log("In here");
+    // //console.log("In here");
     try {
       let readUserStake = await connectedContract.readUserStake();
-      // console.log("stake " + parseInt(readUserStake));
+      // //console.log("stake " + parseInt(readUserStake));
       setBalance(ethers.utils.formatEther(parseInt(readUserStake).toString()));
-      // console.log(balance);
+      // //console.log(balance);
     } catch (e) {
-      console.log(e);
+      //console.log(e);
     }
   };
 
@@ -132,7 +132,7 @@ function Stake() {
   }, [activeTab]);
 
   useEffect(() => {
-    console.log(balance);
+    //console.log(balance);
   }, [balance]);
 
   return (
