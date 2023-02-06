@@ -35,10 +35,14 @@ function Loan() {
   }
   const getData = () => {
     // const spname = "t01130";
-    var data = `{"id": 1,"jsonrpc": "2.0","params": [    "${spname}"],"method": "filscan.FilscanActorById"\n}`;
+    console.log(spname);
+    var data = `{
+        "id": 1,
+        "jsonrpc": "2.0",
+        "params": ["${spname}"],"method": "filscan.FilscanActorById"\n}`;
     var config = {
       method: "post",
-      url: "https://hyperspace.filscan.io:8891/rpc/v1",
+      url: "https://api.filscan.io:8700/rpc/v1",
       headers: {
         "Content-Type": "text/plain",
       },
@@ -47,8 +51,8 @@ function Loan() {
 
     axios(config)
       .then(function (response) {
-        // console.log(response.data);
-        console.log("total balance :" + response.data.result.basic.balance);
+        console.log(response.data);
+        // console.log("total balance :" + response.data.result.basic.balance);
         console.log(
           "Committed / total storage:" +
             bytesToSize(response.data.result.extra.quality_adjust_power)
@@ -95,7 +99,7 @@ function Loan() {
 
     var config = {
       method: "post",
-      url: "https://hyperspace.filscan.io:8891/rpc/v1",
+      url: "https://api.filscan.io:8700/rpc/v1",
       headers: {
         "Content-Type": "text/plain",
       },
@@ -127,7 +131,7 @@ function Loan() {
 
     var config = {
       method: "post",
-      url: "https://hyperspace.filscan.io:8891/rpc/v1",
+      url: "https://api.filscan.io:8700/rpc/v1",
       headers: {
         "Content-Type": "text/plain",
       },
@@ -160,7 +164,7 @@ function Loan() {
 
     var config = {
       method: "post",
-      url: "https://hyperspace.filscan.io:8891/rpc/v1",
+      url: "https://api.filscan.io:8700/rpc/v1",
       headers: {
         "Content-Type": "text/plain",
       },
@@ -192,7 +196,7 @@ function Loan() {
 
     var config = {
       method: "post",
-      url: "https://hyperspace.filscan.io:8891/rpc/v1",
+      url: "https://api.filscan.io:8700/rpc/v1",
       headers: {
         "Content-Type": "text/plain",
       },
@@ -214,7 +218,7 @@ function Loan() {
       });
 
     //filrep API
-    var spname = "f01662887";
+    // var spname = "f01662887";
     var config = {
       method: "get",
       maxBodyLength: Infinity,
@@ -299,15 +303,28 @@ function Loan() {
       return;
     }
     getData();
+    // calculateData();
   };
 
   // useEffect(() => {
   //     getData();
   // }, [])
 
-  // useEffect(() => {
-  //     console.log(dataFetched);
-  // }, [dataFetched])
+  useEffect(() => {
+    console.log(dataFetched);
+    if (
+      dataFetched.initialPledge &&
+      dataFetched.lockedRewards &&
+      dataFetched.preCommitDeposit &&
+      dataFetched.oneYear &&
+      dataFetched.thirtyDays &&
+      dataFetched.sevenDays &&
+      dataFetched.twentyFourHours &&
+      dataFetched.filRepScore
+    ) {
+      calculateData();
+    }
+  }, [dataFetched]);
 
   return (
     <div className="loan-main">
