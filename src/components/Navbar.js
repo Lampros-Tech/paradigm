@@ -57,6 +57,16 @@ function Navbar() {
                 </span>
               </li>
             </Link>
+            <Link
+              to="/method"
+              className="navlink"
+            >
+              <li className="navitem">
+                <span>
+                  Methodology
+                </span>
+              </li>
+            </Link>
             {/* <li className="navitem">
               <span>
                 <Link

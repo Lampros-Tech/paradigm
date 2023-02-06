@@ -1,3 +1,71 @@
 .method-main {
     min-height: 100vh;
+    margin-top: 120px;
+    margin-bottom: 90px;
+
+    .method-card {
+        z-index: 250;
+        position: relative;
+        width: 95%;
+        margin: 0 auto;
+        backdrop-filter: blur(8px);
+        border-radius: 20px;
+
+        .method-header {
+            text-align: center;
+            width: 100%;
+            font-family: "sm-bold";
+            color: #ffffff;
+        }
+
+        .title {
+            font-size: 40px;
+            color: #ffffff;
+            font-family: "sm-bold";
+        }
+
+        .tag {
+            font-size: 25px;
+            color: #ffffff;
+            font-family: "sm-italic";
+        }
+
+        .benefits {
+            font-size: 20px;
+            color: #ffffff;
+
+            .list {
+                list-style-type: disclosure-closed;
+                font-family: "sm-regular";
+
+                .data {
+                    margin: 25px 0;
+                }
+            }
+
+            .list2 {
+                list-style-type: decimal;
+                font-family: "sm-regular";
+
+                .data {
+                    margin: 25px 0;
+
+                    .tag {
+                        font-size: 25px;
+                        color: #ffffff;
+                        font-family: "sm-italic";
+                    }
+
+                    .list-inner {
+                        list-style-type: disclosure-closed;
+                        font-family: "sm-regular";
+        
+                        .data {
+                            margin: 25px 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
