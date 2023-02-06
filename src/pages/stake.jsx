@@ -155,9 +155,74 @@ function Stake() {
         {
           activeTab === 0
             ?
-            <Staked stakeValue={stakeValue} handleNumber={handleNumber} stakeRef={stakeRef} handleFloat={handleFloat} stakeFilCoin={stakeFilCoin} />
+            <>
+              <div className="stake-main">
+                <h2 className="header">Stake your FIL & earn interest over it</h2>
+                <div>
+                  <input
+                    className="stake-entry"
+                    type="text"
+                    value={stakeValue}
+                    onChange={handleNumber}
+                    onBlur={handleFloat}
+                    name="value"
+                    placeholder="value"
+                    ref={stakeRef}
+                  />
+                </div>
+                <div>
+                  <button className="stake-btn" onClick={() => stakeFilCoin()}>
+                    Stake
+                  </button>
+                  {/* <button className="stake-btn" onClick={() => withdrawFilCoin()}>
+                        withdraw
+                    </button> */}
+                  {/* <button className="stake-btn" onClick={() => viewFunctions()}>
+                        viewEpoch
+                    </button> */}
+                </div>
+              </div>
+            </>
+            // <Staked stakeValue={stakeValue} handleNumber={handleNumber} stakeRef={stakeRef} handleFloat={handleFloat} stakeFilCoin={stakeFilCoin} />
             :
-            <Withdraw stakeValue={stakeValue} balance={balance} withdrawRef={withdrawRef} handleNumber={handleWNumber} handleFloat={handleWFloat} withdrawFilCoin={withdrawFilCoin} />
+
+            <>
+              <div className="stake-main">
+                <h2 className="header">Withdraw the staked amount</h2>
+                <div className='balance'>
+                  <div className='left'>
+                    Balance
+                  </div>
+                  <div className='right'>
+                    {balance ? balance : "-"}
+                  </div>
+                </div>
+                <div>
+                  <input
+                    className="stake-entry"
+                    type="text"
+                    value={stakeValue}
+                    onChange={handleNumber}
+                    onBlur={handleFloat}
+                    name="value"
+                    placeholder="value"
+                    ref={withdrawRef}
+                  />
+                </div>
+                <div>
+                  {/* <button className="stake-btn" onClick={() => props.stakeFilCoin()}>
+                        Stake
+                    </button> */}
+                  <button className="stake-btn" onClick={() => withdrawFilCoin()}>
+                    withdraw
+                  </button>
+                  {/* <button className="stake-btn" onClick={() => viewFunctions()}>
+                    viewEpoch
+                    </button> */}
+                </div>
+              </div>
+            </>
+          // <Withdraw stakeValue={stakeValue} balance={balance} withdrawRef={withdrawRef} handleNumber={handleWNumber} handleFloat={handleWFloat} withdrawFilCoin={withdrawFilCoin} />
         }
       </div>
     </div>
