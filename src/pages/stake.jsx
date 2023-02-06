@@ -48,9 +48,9 @@ function Stake() {
     //converting stakeValue from eth -> wei -> integer -> string
     console.log(
       "amount going to withdraw: " +
-      parseInt(
-        ethers.utils.parseUnits(stakeValue.toString(), "ether")
-      ).toString()
+        parseInt(
+          ethers.utils.parseUnits(stakeValue.toString(), "ether")
+        ).toString()
     );
     let withdrawTx = await connectedContract.withdraw(
       address,
@@ -58,7 +58,7 @@ function Stake() {
         ethers.utils.parseUnits(stakeValue.toString(), "ether")
       ).toString(),
       {
-        gasLimit: 3000000,
+        gasLimit: 3000000000,
       }
     );
     const receipt = await withdrawTx.wait();
@@ -125,39 +125,49 @@ function Stake() {
     } catch (e) {
       console.log(e);
     }
-
-  }
+  };
 
   useEffect(() => {
     if (activeTab === 1) fetchBalance();
-  }, [activeTab])
+  }, [activeTab]);
 
   useEffect(() => {
-    console.log(balance)
-  }, [balance])
+    console.log(balance);
+  }, [balance]);
 
   return (
     <div className="stake-main">
       <div className="home-bg"></div>
       <div className="stake-form">
         <div className="switch">
-          <div className="left" onClick={() => { setActiveTab(0) }}>
+          <div
+            className="left"
+            onClick={() => {
+              setActiveTab(0);
+            }}
+          >
             <span className={activeTab === 0 ? "active" : "inactive"}>
               Stake
             </span>
           </div>
-          <div className="right" onClick={() => { setActiveTab(1) }}>
+          <div
+            className="right"
+            onClick={() => {
+              setActiveTab(1);
+            }}
+          >
             <span className={activeTab === 1 ? "active" : "inactive"}>
               Withdraw
             </span>
           </div>
         </div>
         {
-          activeTab === 0
-            ?
+          activeTab === 0 ? (
             <>
               <div className="stake-main">
-                <h2 className="header">Stake your FIL & earn interest over it</h2>
+                <h2 className="header">
+                  Stake your FIL & earn interest over it
+                </h2>
                 <div>
                   <input
                     className="stake-entry"
@@ -183,19 +193,14 @@ function Stake() {
                 </div>
               </div>
             </>
+          ) : (
             // <Staked stakeValue={stakeValue} handleNumber={handleNumber} stakeRef={stakeRef} handleFloat={handleFloat} stakeFilCoin={stakeFilCoin} />
-            :
-
             <>
               <div className="stake-main">
                 <h2 className="header">Withdraw the staked amount</h2>
-                <div className='balance'>
-                  <div className='left'>
-                    Balance
-                  </div>
-                  <div className='right'>
-                    {balance ? balance : "-"}
-                  </div>
+                <div className="balance">
+                  <div className="left">Balance</div>
+                  <div className="right">{balance ? balance : "-"}</div>
                 </div>
                 <div>
                   <input
@@ -213,7 +218,10 @@ function Stake() {
                   {/* <button className="stake-btn" onClick={() => props.stakeFilCoin()}>
                         Stake
                     </button> */}
-                  <button className="stake-btn" onClick={() => withdrawFilCoin()}>
+                  <button
+                    className="stake-btn"
+                    onClick={() => withdrawFilCoin()}
+                  >
                     withdraw
                   </button>
                   {/* <button className="stake-btn" onClick={() => viewFunctions()}>
@@ -222,6 +230,7 @@ function Stake() {
                 </div>
               </div>
             </>
+          )
           // <Withdraw stakeValue={stakeValue} balance={balance} withdrawRef={withdrawRef} handleNumber={handleWNumber} handleFloat={handleWFloat} withdrawFilCoin={withdrawFilCoin} />
         }
       </div>
