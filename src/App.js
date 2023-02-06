@@ -16,6 +16,7 @@ import Verify from "./pages/verify";
 import Error404 from "./pages/error-404";
 import Footer from "./pages/footer";
 import Loan from "./pages/loan";
+import Methodologies from "./pages/methodologies";
 
 function App() {
   const { chains, provider } = configureChains(
@@ -54,6 +55,7 @@ function App() {
               <Route path="/stake" element={<Stake />} />
               <Route exact path="/verify/:id" element={<Verify />} />
               <Route path="/loan" element={<Loan />} />
+              <Route path="/method" element={<Methodologies />} />
               <Route path="*" element={<Error404 />} />
             </Routes>
           </Router>

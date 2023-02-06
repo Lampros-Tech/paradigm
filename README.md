@@ -1,70 +1,62 @@
-# Getting Started with Create React App
+# Paradigm
+## Scale up your storage infrastructure with Paradigm!
+## Link
+https://classic-chords.vercel.app
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## About
+An interactive and rewarding platform for music and art lovers. Play your music and mint NFTs - taking generative art to the next level!
 
-In the project directory, you can run:
+Classic Chords provides a means of generating NFTs from the music you play from the instruments. The algorithm generates the art based on the keys pressed, the duration of the music and various other interesting factors.
 
-### `npm start`
+The generated art can be stored as an NFT, along with the music played as background.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+You can mint these NFTs for your fans and followers as an artist. Similarly, live streams can strengthen the musicians’ community at Classic Chords. Those with the NFTs gain access to premium live streams the artist can host.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+The NFT will have some useful features,
 
-### `npm test`
+(1) An artist can create a stream for their community (users who hold that artist’s NFT) or create a general stream for everyone on the platform. Those with the NFTs from the artist can access the community streams too.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+(2) A user can give away their NFTs for rent. So the user who is either holding their NFT or who has rented the NFT can participate in the premium stream of the artist.
 
-### `npm run build`
+### Setup
+```
+npm install
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Start
+```
+npm start
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Instructions
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1.  Connect with metamask. Switch to testnet( Mumbai Testnet: https://medium.com/stakingbits/how-to-connect-polygon-mumbai-testnet-to-metamask-fc3487a3871f )
 
-### `npm run eject`
+2.  Create your own profile from the profile page using the edit button beside profile.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+3.  Go to player page. You can play around with the piano available.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+4.  Click on Start Recording in order to start recording the notes you play.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+5.  Once you have finished recording the note you were playing click on Stop Recording.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+6.  As soon as you click on Stop Recording you will get a popup to mint the art with a generative art video.
 
-## Learn More
+7.  You can either mint the art or save the art if you liked it.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+8.  You can find the art you have minted in the profile page.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+9.  Head to profile page and put the NFT you have minted for sale or Rent by clicking on the NFT and filling up the details.
 
-### Code Splitting
+10. You can find the NFT you have put on sale from All NFTs page.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+11. As an artist one can create their own Live Stream by going to the Stream -> Go Live option from navbar.
 
-### Analyzing the Bundle Size
+12. Add the title and description of the stream and click on start.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+13. Once the stream starts you will get a prompt for XMTP. Sign for XMTP and you will get the conversations below.
 
-### Making a Progressive Web App
+14. In all stream page you will get all the live streams as well as previosuly recorded streams.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
