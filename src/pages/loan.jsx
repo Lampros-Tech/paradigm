@@ -429,10 +429,10 @@ function Loan() {
           {calculatedScore ? (
             <>
               <div className="loading-screen">
-                {calculatedScore ? (
+                {calculatedScore.creditScore ? (
                   <div>Credit score: {calculatedScore.creditScore}</div>
                 ) : null}
-                {calculatedScore ? (
+                {calculatedScore.filAvailability ? (
                   <div>
                     FIL Available to borrow: {calculatedScore.filAvailability}
                   </div>
