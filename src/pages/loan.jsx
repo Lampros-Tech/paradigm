@@ -13,7 +13,7 @@ function Loan() {
     sevenDays: null,
     twentyFourHours: null,
     filRepScore: null,
-    counter: 0
+    counter: 0,
   });
 
   // useState for final calculated score
@@ -281,10 +281,9 @@ function Loan() {
       calculateData();
       setFetchedData((dataFetched) => ({
         ...dataFetched,
-        counter: 0
+        counter: 0,
       }));
       setLoading(false);
-
     });
   };
 
@@ -427,27 +426,31 @@ function Loan() {
           </button>
         </div>
         <div className="display">
-          {
-            loading
-              ?
-              <div className="loading-screen">
-                {/* <div>
+          {loading ? (
+            <div className="loading-screen">
+              {/* <div>
                   <img src="/images/loading.gif" />
                 </div> */}
-                <div className="loading-text">Loading...</div>
+              <div className="loading-text">Loading...</div>
+            </div>
+          ) : (
+            <div className="loading-screen">
+              <div>
+                Credit Score :{" "}
+                {calculatedScore?.creditScore
+                  ? calculatedScore?.creditScore
+                  : "-"}
               </div>
-              :
-              <div className="loading-screen">
-                <div>
-                  Credit Score : {calculatedScore?.creditScore ? calculatedScore?.creditScore : "-"}
-                </div>
-                <br />
-                <br />
-                <div>
-                  Fil Availability : {calculatedScore?.filAvailability ? calculatedScore?.filAvailability : "-"}
-                </div>
+              <br />
+              <br />
+              <div>
+                Fil Availability :{" "}
+                {calculatedScore?.filAvailability
+                  ? calculatedScore?.filAvailability + " FIL"
+                  : "-"}
               </div>
-          }
+            </div>
+          )}
         </div>
       </div>
     </div>
