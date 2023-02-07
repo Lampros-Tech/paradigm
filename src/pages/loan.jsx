@@ -412,7 +412,7 @@ function Loan() {
               validateNameAndApprove();
             }}
           >
-            Check Eligibility
+            {loading ? <div>loading...</div> : <div>Check Eligibility</div>}
           </button>
           <button
             className="search-btn"
@@ -426,31 +426,18 @@ function Loan() {
           </button>
         </div>
         <div className="display">
-          {loading ? (
-            <div className="loading-screen">
-              {/* <div>
-                  <img src="/images/loading.gif" />
-                </div> */}
-              <div className="loading-text">Loading...</div>
-            </div>
-          ) : (
-            <div className="loading-screen">
-              <div>
-                Credit Score :{" "}
-                {calculatedScore?.creditScore
-                  ? calculatedScore?.creditScore
-                  : "-"}
+          {calculateData ? (
+            <>
+              <div className="loading-screen">
+                {calculatedScore ? (
+                  <h1>{calculatedScore.creditScore}</h1>
+                ) : null}
+                {calculatedScore ? (
+                  <h1>{calculatedScore.filAvailability}</h1>
+                ) : null}
               </div>
-              <br />
-              <br />
-              <div>
-                Fil Availability :{" "}
-                {calculatedScore?.filAvailability
-                  ? calculatedScore?.filAvailability + " FIL"
-                  : "-"}
-              </div>
-            </div>
-          )}
+            </>
+          ) : null}
         </div>
       </div>
     </div>
