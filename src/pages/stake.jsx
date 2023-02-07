@@ -14,6 +14,7 @@ function Stake() {
   const { data: signer } = useSigner();
   const [duration, setDuration] = useState(30);
   const [stakeValue, setStakeValue] = useState("");
+  const [loading, setLoading] = useState(false);
   const [activeTab, setActiveTab] = useState(0);
   const [balance, setBalance] = useState("");
   const stakeRef = useRef();
@@ -28,6 +29,7 @@ function Stake() {
 
   //function to stake
   const stakeFilCoin = async () => {
+    setLoading(true);
     //1675492444
     //1675492603134
     //console.log("Inside stake function");
@@ -36,6 +38,7 @@ function Stake() {
     });
     const receipt = await stakeTx.wait();
     if (receipt) {
+      setLoading(true);
       //console.log("stake successful");
       fetchBalance();
       stakeRef.current = "";
@@ -44,6 +47,7 @@ function Stake() {
 
   //function to withdraw
   const withdrawFilCoin = async () => {
+    setLoading(true);
     //console.log("Inside withdraw function");
     //converting stakeValue from eth -> wei -> integer -> string
     //console.log(
@@ -63,6 +67,7 @@ function Stake() {
     );
     const receipt = await withdrawTx.wait();
     if (receipt) {
+      setLoading(false);
       //console.log("withdraw successful");
       withdrawRef.current = "";
       fetchBalance();
@@ -182,7 +187,7 @@ function Stake() {
                 </div>
                 <div>
                   <button className="stake-btn" onClick={() => stakeFilCoin()}>
-                    Stake
+                    {loading ? <div>loading</div> : <div>Stake</div>}
                   </button>
                   {/* <button className="stake-btn" onClick={() => withdrawFilCoin()}>
                         withdraw
@@ -222,7 +227,7 @@ function Stake() {
                     className="stake-btn"
                     onClick={() => withdrawFilCoin()}
                   >
-                    withdraw
+                    {loading ? <div>loading</div> : <div>Withdraw</div>}
                   </button>
                   {/* <button className="stake-btn" onClick={() => viewFunctions()}>
                     viewEpoch
