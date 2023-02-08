@@ -49,6 +49,9 @@
     font-size: 30px;
     font-family: "sm-bold";
     color: #ffffff;
+    .score-data {
+      white-space: nowrap;
+    }
 
     // .loading-screen {
     //     display: flex;

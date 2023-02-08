@@ -29,48 +29,58 @@ function Stake() {
 
   //function to stake
   const stakeFilCoin = async () => {
-    setLoading(true);
-    //1675492444
-    //1675492603134
-    //console.log("Inside stake function");
-    let stakeTx = await connectedContract.stake(duration, {
-      value: ethers.utils.parseUnits(stakeValue.toString(), "ether"),
-    });
-    const receipt = await stakeTx.wait();
-    if (receipt) {
+    try {
       setLoading(true);
-      //console.log("stake successful");
-      fetchBalance();
-      stakeRef.current = "";
+      //1675492444
+      //1675492603134
+      //console.log("Inside stake function");
+      let stakeTx = await connectedContract.stake(duration, {
+        value: ethers.utils.parseUnits(stakeValue.toString(), "ether"),
+      });
+      const receipt = await stakeTx.wait();
+      if (receipt) {
+        setLoading(true);
+        //console.log("stake successful");
+        fetchBalance();
+        stakeRef.current = "";
+      }
+    } catch (err) {
+      setLoading(false);
+      console.log(err);
     }
   };
 
   //function to withdraw
   const withdrawFilCoin = async () => {
-    setLoading(true);
-    //console.log("Inside withdraw function");
-    //converting stakeValue from eth -> wei -> integer -> string
-    //console.log(
-    //   "amount going to withdraw: " +
-    //     parseInt(
-    //       ethers.utils.parseUnits(stakeValue.toString(), "ether")
-    //     ).toString()
-    // );
-    let withdrawTx = await connectedContract.withdraw(
-      address,
-      parseInt(
-        ethers.utils.parseUnits(stakeValue.toString(), "ether")
-      ).toString(),
-      {
-        gasLimit: 3000000000,
+    try {
+      setLoading(true);
+      //console.log("Inside withdraw function");
+      //converting stakeValue from eth -> wei -> integer -> string
+      //console.log(
+      //   "amount going to withdraw: " +
+      //     parseInt(
+      //       ethers.utils.parseUnits(stakeValue.toString(), "ether")
+      //     ).toString()
+      // );
+      let withdrawTx = await connectedContract.withdraw(
+        address,
+        parseInt(
+          ethers.utils.parseUnits(stakeValue.toString(), "ether")
+        ).toString(),
+        {
+          gasLimit: 3000000000,
+        }
+      );
+      const receipt = await withdrawTx.wait();
+      if (receipt) {
+        setLoading(false);
+        //console.log("withdraw successful");
+        withdrawRef.current = "";
+        fetchBalance();
       }
-    );
-    const receipt = await withdrawTx.wait();
-    if (receipt) {
+    } catch (err) {
       setLoading(false);
-      //console.log("withdraw successful");
-      withdrawRef.current = "";
-      fetchBalance();
+      console.log(err);
     }
   };
 
