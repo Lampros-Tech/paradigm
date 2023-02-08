@@ -1,19 +1,25 @@
 # Paradigm
+
 ## Scale up your storage infrastructure with Paradigm!
+
 ## Link
+
 https://paradigm-vert.vercel.app/
 
-
 ## About
+
 Paradigm is a DeFi app powered by Filecoin. The DApp provides a paradigm shift in upgrading infrastructure for Storage Providers by staking and lending.
 One can stake their FIL and calculate their credit score for FIL availability and avail of a loan to upscale their storage.
+Also, we have used "**Zondax API**" to change the owner of the miner or we can add us(paradigm) as the benificiary. So it creates the surity for the under colleteraliazed loan.
 
 ### Setup
+
 ```
 npm install
 ```
 
 ### Start
+
 ```
 npm start
 ```
